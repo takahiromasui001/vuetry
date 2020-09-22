@@ -9,14 +9,18 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <div id="app">
-      <div>{{ html }}</div>
-      <div v-html="html">{{ html }}</div>
+      <a :[attribute]="url">Google</a>
+      <a v-bind="twitterObject">Twitter</a>
     </div>
 
     <script>
       new Vue({
         el: '#app',
-        data: { html: '<h1>h1です</h1>' },
+        data: {
+          url: 'https://google.com',
+          attribute: 'href',
+          twitterObject: { href: 'https://twitter.com', id: 31 },
+        },
         methods: {},
       })
     </script>
