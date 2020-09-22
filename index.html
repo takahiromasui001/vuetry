@@ -9,8 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <div id="app">
-      <p>{{message}}</p>
-      <button v-on:click="reverseMessage">メッセージを反転</button>
+      <p v-once>{{ message }}</p>
+      <p>{{ sayHi() }}</p>
     </div>
 
     <script>
@@ -18,10 +18,13 @@
         el: '#app',
         data: {
           message: 'HelloWorld!',
+          number: 3,
+          ok: true,
         },
         methods: {
-          reverseMessage: function () {
-            this.message = this.message.split('').reverse().join('')
+          sayHi: function () {
+            this.message = 'Hello VueJS'
+            return 'Hi'
           },
         },
       })
