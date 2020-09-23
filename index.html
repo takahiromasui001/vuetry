@@ -9,31 +9,24 @@
   <body>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <div id="app1">{{message}}</div>
-    <div id="app2">
+    <div id="app1">
       <p>{{message}}</p>
-      <button @click="changeMessage1">インスタンス1のメッセージを変更</button>
+      <p>{{name}}</p>
+      <button @click="message = 'ボタンから変更'">変更</button>
     </div>
 
     <script>
-      const vm1 = new Vue({
+      const vm = new Vue({
         el: '#app1',
         data: {
-          message: 'インスタンス1',
+          message: 'こんにちは',
+          name: '名前',
         },
       })
 
-      const vm2 = new Vue({
-        el: '#app2',
-        data: {
-          message: 'インスタンス2',
-        },
-        methods: {
-          changeMessage1: function () {
-            vm1.message = 'インスタンス2から変えました'
-          },
-        },
-      })
+      vm.name = 'よしぴー'
+
+      console.log(vm)
     </script>
   </body>
 </html>
