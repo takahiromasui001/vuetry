@@ -9,24 +9,37 @@
   <body>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <div id="app1">
+    <div id="app">
       <p>{{message}}</p>
       <p>{{name}}</p>
+      <p>{{myData}}</p>
       <button @click="message = 'ボタンから変更'">変更</button>
     </div>
 
+    <div id="app2"></div>
+
     <script>
+      const data = {
+        message: 'こんにちは',
+        name: '名前',
+      }
       const vm = new Vue({
-        el: '#app1',
-        data: {
-          message: 'こんにちは',
-          name: '名前',
+        data: data,
+        computed: {
+          myData: function () {
+            return this.$data
+          },
         },
       })
 
-      vm.name = 'よしぴー'
+      vm.$mount('#app')
 
-      console.log(vm)
+      new Vue({
+        data: {
+          name: 'よしぴー',
+        },
+        template: '<h1>こんにちは{{name}}</h1>',
+      }).$mount('#app2')
     </script>
   </body>
 </html>
