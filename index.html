@@ -10,20 +10,26 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <div id="app">
-      <button @click="ok = !ok">ボタン</button>
-      <p v-if="ok">If</p>
-      <p v-show="ok">Show</p>
-      <p v-show="!ok">Not Show</p>
-      <template v-show="ok">
-        <p>test</p>
-      </template>
+      <ul>
+        <li v-for="(fruit, index) in fruits">({{index}}){{fruit}}</li>
+      </ul>
+      <ul>
+        <li v-for="(value, key, index) in object">
+          {{index}}-{{key}}-{{value}}
+        </li>
+      </ul>
     </div>
 
     <script>
       new Vue({
         el: '#app',
         data: {
-          ok: true,
+          fruits: ['りんご', 'バナナ', 'ぶどう'],
+          object: {
+            firstName: '太郎',
+            lastName: '田中',
+            age: 21,
+          },
         },
       })
     </script>
