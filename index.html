@@ -18,6 +18,11 @@
 
     <div id="app2"></div>
     <div id="app3"></div>
+    <div id="app4">
+      <h1>こんにちは{{name}}</h1>
+      <button @click="name = '太郎さん'">名前を変更</button>
+      <button @click="destroy">インスタンスを破壊</button>
+    </div>
 
     <script>
       const data = {
@@ -56,6 +61,42 @@
       console.log(dom)
       console.log(document)
       console.dir(document)
+
+      new Vue({
+        el: '#app4',
+        data: {
+          name: 'よしぴー',
+        },
+        methods: {
+          destroy: function () {
+            this.$destroy()
+          },
+        },
+        beforeCreate: function () {
+          console.log('beforeCreate')
+        },
+        created: function () {
+          console.log('created')
+        },
+        beforeMount: function () {
+          console.log('beforeMount')
+        },
+        mounted: function () {
+          console.log('mounted')
+        },
+        beforeUpdate: function () {
+          console.log('beforeUpdate')
+        },
+        updated: function () {
+          console.log('updated')
+        },
+        beforeDestroy: function () {
+          console.log('beforeDestroy')
+        },
+        destroyed: function () {
+          console.log('destroyed')
+        },
+      })
     </script>
   </body>
 </html>
