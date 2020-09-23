@@ -22,13 +22,21 @@
       <h1>こんにちは{{name}}</h1>
       <button @click="name = '太郎さん'">名前を変更</button>
       <button @click="destroy">インスタンスを破壊</button>
+      <ello></ello>
+      <ello></ello>
+      <ello></ello>
+      <ello></ello>
     </div>
-
     <script>
       const data = {
         message: 'こんにちは',
         name: '名前',
       }
+
+      Vue.component('ello', {
+        template: '<p>こんばんわ</p>',
+      })
+
       const vm = new Vue({
         data: data,
         computed: {
