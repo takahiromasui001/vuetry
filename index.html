@@ -10,100 +10,29 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <div id="app">
-      <p>{{message}}</p>
-      <p>{{name}}</p>
-      <p>{{myData}}</p>
-      <button @click="message = 'ボタンから変更'">変更</button>
+      <my-component></my-component>
+      <my-component></my-component>
+      <my-component></my-component>
     </div>
 
-    <div id="app2"></div>
-    <div id="app3"></div>
-    <div id="app4">
-      <h1>こんにちは{{name}}</h1>
-      <button @click="name = '太郎さん'">名前を変更</button>
-      <button @click="destroy">インスタンスを破壊</button>
-      <ello></ello>
-      <ello></ello>
-      <ello></ello>
-      <ello></ello>
-    </div>
     <script>
-      const data = {
-        message: 'こんにちは',
-        name: '名前',
-      }
-
-      Vue.component('ello', {
-        template: '<p>こんばんわ</p>',
-      })
-
-      const vm = new Vue({
-        data: data,
-        computed: {
-          myData: function () {
-            return this.$data
-          },
+      Vue.component('my-component', {
+        data: function () {
+          return {
+            number: 12,
+          }
         },
-      })
-
-      vm.$mount('#app')
-
-      new Vue({
-        data: {
-          name: 'よしぴー',
-        },
-        template: '<h1>こんにちは{{name}}</h1>',
-      }).$mount('#app2')
-
-      new Vue({
-        data: {
-          name: 'よしぴー',
-        },
-        render: function (h) {
-          console.log(h('h1', 'こんにちは' + this.name))
-          return h('h1', 'こんにちは' + this.name)
-        },
-      }).$mount('#app3')
-
-      const dom = document.createElement('div')
-      console.log(dom)
-      console.log(document)
-      console.dir(document)
-
-      new Vue({
-        el: '#app4',
-        data: {
-          name: 'よしぴー',
-        },
+        template:
+          '<p>いいね({{number}})<button @click="increment">+1</button></p>',
         methods: {
-          destroy: function () {
-            this.$destroy()
+          increment: function () {
+            this.number += 1
           },
         },
-        beforeCreate: function () {
-          console.log('beforeCreate')
-        },
-        created: function () {
-          console.log('created')
-        },
-        beforeMount: function () {
-          console.log('beforeMount')
-        },
-        mounted: function () {
-          console.log('mounted')
-        },
-        beforeUpdate: function () {
-          console.log('beforeUpdate')
-        },
-        updated: function () {
-          console.log('updated')
-        },
-        beforeDestroy: function () {
-          console.log('beforeDestroy')
-        },
-        destroyed: function () {
-          console.log('destroyed')
-        },
+      })
+
+      new Vue({
+        el: '#app',
       })
     </script>
   </body>
